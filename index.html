@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid-19 Count</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+       crossorigin="Access-Control-Allow-Origin"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+<body>
+    <!---
+    <nav class = "menu">
+        <p>Covid-19 Case Counter</p>
+        <form class = "search-form">
+            <input type="text" placeholder="Search For A Country...">
+            <button>Search</button>
+        </form>
+    </nav>
+ <div class="stats">
+    <div class="covidimg">
+        <img class=virus src="covid.jpg" alt="Coronavirus cell">
+    </div> --->
+    
+    <header>
+        <nav>
+        <h1>Covid-19 Case Counter</h1>
+    </nav>
+    </header>
+
+    <hr width="80%">
+
+    
+        <p class="total"></p>
+        <p class="active"></p>
+        <p class="deaths"></p>
+        <p class="recovered"></p>
+        <p class="newCases"></p>
+ 
+ <!---
+    <div class="earthimg">
+        <img class=globe src="spinning.jpg" alt="Spinning globe">
+    </div>
+</div>
+--->
+<br>
+
+<hr width="80%"> 
+
+<div class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="closeBtn">&times;</span>
+            <h2 class="countryName"></h2>
+        </div>
+        <div class="modal-body">
+            <li class="countryTotal"></li>
+            <li class="countryActive"></li>
+            <li class="countryRecovered"></li>
+            <li class="countryDeaths"></li>
+            <li class="countryNewCases"></li>
+            <li class="countryNewDeaths"></li>
+        </div>
+        <div class="modal-footer">
+            <h3>Click anywhere to close </h3>
+        </div>
+    </div>
+</div>
+
+<div class="country-flags">
+    <img class="flag" src="https://www.countryflags.io/af/shiny/64.png" alt="Afghanistan flag" onclick="myFunction('AF')">
+    <img class="flag" src="https://www.countryflags.io/al/shiny/64.png" alt="Albania Flag" onclick="myFunction('AL')">
+    <img class="flag" src="https://www.countryflags.io/dz/shiny/64.png" alt="Algeria Flag" onclick="myFunction('DZ')">
+    <img class="flag" src="https://www.countryflags.io/ao/shiny/64.png" alt="Angola Flag" onclick="myFunction('AO')">
+    <img class="flag" src="https://www.countryflags.io/ar/shiny/64.png" alt="Argentina Flag" onclick="myFunction('AR')">
+    <img class="flag" src="https://www.countryflags.io/am/shiny/64.png" alt="Armenia Flag" onclick="myFunction('AM')">
+    <img class="flag" src="https://www.countryflags.io/au/shiny/64.png" alt="Australia Flag" onclick="myFunction('AU')">
+    <img class="flag" src="https://www.countryflags.io/at/shiny/64.png" alt="Austria Flag" onclick="myFunction('AT')">
+    <img class="flag" src="https://www.countryflags.io/az/shiny/64.png" alt="Azerbaijan Flag" onclick="myFunction('AZ')">
+    <img class="flag" src="https://www.countryflags.io/bs/shiny/64.png" alt="Bahamas Flag" onclick="myFunction('BS')">
+    <img class="flag" src="https://www.countryflags.io/bd/shiny/64.png" alt="Bangladesh Flag" onclick="myFunction('BD')">
+    <img class="flag" src="https://www.countryflags.io/by/shiny/64.png" alt="Belarus Flag" onclick="myFunction('BY')">
+    <img class="flag" src="https://www.countryflags.io/be/shiny/64.png" alt="Belgium Flag" onclick="myFunction('BE')">
+    <img class="flag" src="https://www.countryflags.io/bz/shiny/64.png" alt="Belize Flag" onclick="myFunction('BZ')">
+    <img class="flag" src="https://www.countryflags.io/bj/shiny/64.png" alt="Benin Flag" onclick="myFunction('BJ')">
+    <img class="flag" src="https://www.countryflags.io/bt/shiny/64.png" alt="Bhutan Flag" onclick="myFunction('BT')">
+    <img class="flag" src="https://www.countryflags.io/bo/shiny/64.png" alt="Bolivia Flag" onclick="myFunction('BO')">
+    <img class="flag" src="https://www.countryflags.io/ba/shiny/64.png" alt="Bosnia Flag" onclick="myFunction('BA')">
+    <img class="flag" src="https://www.countryflags.io/bw/shiny/64.png" alt="Botswana Flag" onclick="myFunction('BW')">
+    <img class="flag" src="https://www.countryflags.io/br/shiny/64.png" alt="Brasil Flag" onclick="myFunction('BR')">
+    <img class="flag" src="https://www.countryflags.io/bn/shiny/64.png" alt="Brunei Flag" onclick="myFunction('BN')">
+    <img class="flag" src="https://www.countryflags.io/bg/shiny/64.png" alt="Bulgaria Flag" onclick="myFunction('BG')">
+    <img class="flag" src="https://www.countryflags.io/bf/shiny/64.png" alt="Burkina Faso Flag" onclick="myFunction('BF')">
+    <img class="flag" src="https://www.countryflags.io/bi/shiny/64.png" alt="Burundi Flag" onclick="myFunction('BI')">
+    <img class="flag" src="https://www.countryflags.io/kh/shiny/64.png" alt="Cambodia Flag" onclick="myFunction('KH')">
+    <img class="flag" src="https://www.countryflags.io/cm/shiny/64.png" alt="Cameroon Flag" onclick="myFunction('CM')">
+    <img class="flag" src="https://www.countryflags.io/ca/shiny/64.png" alt="Canada Flag" onclick="myFunction('CA')">
+    <img class="flag" src="https://www.countryflags.io/ci/shiny/64.png" alt="Ivory Coast Flag" onclick="myFunction('CI')">
+    <img class="flag" src="https://www.countryflags.io/cf/shiny/64.png" alt="Central African Republic Flag" onclick="myFunction('CF')">
+    <img class="flag" src="https://www.countryflags.io/td/shiny/64.png" alt="Chad Flag" onclick="myFunction('TD')">
+    <img class="flag" src="https://www.countryflags.io/cl/shiny/64.png" alt="Chile Flag" onclick="myFunction('CL')">
+    <img class="flag" src="https://www.countryflags.io/cn/shiny/64.png" alt="China Flag" onclick="myFunction('CN')">
+    <img class="flag" src="https://www.countryflags.io/co/shiny/64.png" alt="Colombia Flag" onclick="myFunction('CO')">
+    <img class="flag" src="https://www.countryflags.io/cg/shiny/64.png" alt="Congo Flag" onclick="myFunction('CG')">
+    <img class="flag" src="https://www.countryflags.io/cd/shiny/64.png" alt="Democratic Rep of Congo Flag" onclick="myFunction('CD')">
+    <img class="flag" src="https://www.countryflags.io/cr/shiny/64.png" alt="Costa Rica Flag" onclick="myFunction('CR')">
+    <img class="flag" src="https://www.countryflags.io/hr/shiny/64.png" alt="Croatia Flag" onclick="myFunction('HR')">
+    <img class="flag" src="https://www.countryflags.io/cu/shiny/64.png" alt="Cuba Flag" onclick="myFunction('CU')">
+    <img class="flag" src="https://www.countryflags.io/cy/shiny/64.png" alt="Cyprus Flag" onclick="myFunction('CY')">
+    <img class="flag" src="https://www.countryflags.io/cz/shiny/64.png" alt="Czech Republic Flag" onclick="myFunction('CZ')">
+    <img class="flag" src="https://www.countryflags.io/dk/shiny/64.png" alt="Denmark Flag" onclick="myFunction('DK')">
+    <img class="flag" src="https://www.countryflags.io/dj/shiny/64.png" alt="Djibouti Flag" onclick="myFunction('DJ')">
+    <img class="flag" src="https://www.countryflags.io/do/shiny/64.png" alt="Dominican Republic Flag" onclick="myFunction('DO')">
+    <img class="flag" src="https://www.countryflags.io/ec/shiny/64.png" alt="Ecuador Flag" onclick="myFunction('EC')">
+    <img class="flag" src="https://www.countryflags.io/eg/shiny/64.png" alt="Egypt Flag" onclick="myFunction('EG')">
+    <img class="flag" src="https://www.countryflags.io/sv/shiny/64.png" alt="El Salvador Flag" onclick="myFunction('SV')">
+    <img class="flag" src="https://www.countryflags.io/gq/shiny/64.png" alt="Equatorial Guinea Flag" onclick="myFunction('GQ')">
+    <img class="flag" src="https://www.countryflags.io/er/shiny/64.png" alt="Eritrea Flag" onclick="myFunction('ER')">
+    <img class="flag" src="https://www.countryflags.io/ee/shiny/64.png" alt="Estonia Flag" onclick="myFunction('EE')">
+    <img class="flag" src="https://www.countryflags.io/et/shiny/64.png" alt="Ethiopia Flag" onclick="myFunction('ET')">
+    <img class="flag" src="https://www.countryflags.io/fk/shiny/64.png" alt="Falkland Islands Flag" onclick="myFunction('FK')">
+    <img class="flag" src="https://www.countryflags.io/fj/shiny/64.png" alt="Fiji Flag" onclick="myFunction('FJ')">
+    <img class="flag" src="https://www.countryflags.io/fi/shiny/64.png" alt="Finland Flag" onclick="myFunction('FI')">
+    <img class="flag" src="https://www.countryflags.io/fr/shiny/64.png" alt="France Flag" onclick="myFunction('FR')">
+    <img class="flag" src="https://www.countryflags.io/gf/shiny/64.png" alt="French Guiana Flag" onclick="myFunction('GF')">
+    <img class="flag" src="https://www.countryflags.io/tf/shiny/64.png" alt="French Southern Territories Flag" onclick="myFunction('TF')">
+    <img class="flag" src="https://www.countryflags.io/ga/shiny/64.png" alt="Gabon Flag" onclick="myFunction('GA')">
+    <img class="flag" src="https://www.countryflags.io/gm/shiny/64.png" alt="Gambia Flag" onclick="myFunction('GM')">
+    <img class="flag" src="https://www.countryflags.io/ge/shiny/64.png" alt="Georgia Flag" onclick="myFunction('GE')">
+    <img class="flag" src="https://www.countryflags.io/de/shiny/64.png" alt="Germany Flag" onclick="myFunction('DE')">
+    <img class="flag" src="https://www.countryflags.io/gh/shiny/64.png" alt="Ghana Flag" onclick="myFunction('GH')">
+    <img class="flag" src="https://www.countryflags.io/gr/shiny/64.png" alt="Greece Flag" onclick="myFunction('GR')">
+    <img class="flag" src="https://www.countryflags.io/gl/shiny/64.png" alt="Greenland Flag" onclick="myFunction('GL')">
+    <img class="flag" src="https://www.countryflags.io/gt/shiny/64.png" alt="Guatemala Flag" onclick="myFunction('GT')">
+    <img class="flag" src="https://www.countryflags.io/gn/shiny/64.png" alt="Guinea Flag" onclick="myFunction('GN')">
+    <img class="flag" src="https://www.countryflags.io/gw/shiny/64.png" alt="Guinea-Bissau Flag" onclick="myFunction('GW')">
+    <img class="flag" src="https://www.countryflags.io/gy/shiny/64.png" alt="Guyana Flag" onclick="myFunction('GY')">
+    <img class="flag" src="https://www.countryflags.io/ht/shiny/64.png" alt="Haiti Flag" onclick="myFunction('HT')">
+    <img class="flag" src="https://www.countryflags.io/hn/shiny/64.png" alt="Honduras Flag" onclick="myFunction('HN')">
+    <img class="flag" src="https://www.countryflags.io/hk/shiny/64.png" alt="Hong Kong Flag" onclick="myFunction('HK')">
+    <img class="flag" src="https://www.countryflags.io/hu/shiny/64.png" alt="Hungary Flag" onclick="myFunction('HU')">
+    <img class="flag" src="https://www.countryflags.io/is/shiny/64.png" alt="Iceland Flag" onclick="myFunction('IS')">
+    <img class="flag" src="https://www.countryflags.io/in/shiny/64.png" alt="India Flag" onclick="myFunction('IN')">
+    <img class="flag" src="https://www.countryflags.io/id/shiny/64.png" alt="Indonesia Flag" onclick="myFunction('ID')">
+    <img class="flag" src="https://www.countryflags.io/ir/shiny/64.png" alt="Iran Flag" onclick="myFunction('IR')">
+    <img class="flag" src="https://www.countryflags.io/iq/shiny/64.png" alt="Iraq Flag" onclick="myFunction('IQ')">
+    <img class="flag" src="https://www.countryflags.io/ie/shiny/64.png" alt="Ireland Flag" onclick="myFunction('IE')">
+    <img class="flag" src="https://www.countryflags.io/il/shiny/64.png" alt="Israel Flag" onclick="myFunction('IL')">
+    <img class="flag" src="https://www.countryflags.io/it/shiny/64.png" alt="Italy Flag" onclick="myFunction('IT')">
+    <img class="flag" src="https://www.countryflags.io/jm/shiny/64.png" alt="Jamaica Flag" onclick="myFunction('JM')">
+    <img class="flag" src="https://www.countryflags.io/jp/shiny/64.png" alt="Japan Flag" onclick="myFunction('JP')">
+    <img class="flag" src="https://www.countryflags.io/jo/shiny/64.png" alt="Jordan Flag" onclick="myFunction('JO')">
+    <img class="flag" src="https://www.countryflags.io/kz/shiny/64.png" alt="Kazakhstan Flag" onclick="myFunction('KZ')">
+    <img class="flag" src="https://www.countryflags.io/ke/shiny/64.png" alt="Kenya Flag" onclick="myFunction('KE')">
+    <img class="flag" src="https://www.countryflags.io/kp/shiny/64.png" alt="Korea Flag" onclick="myFunction('KP')">
+    <img class="flag" src="https://www.countryflags.io/xk/shiny/64.png" alt="Kosovo Flag" onclick="myFunction('XK')">
+    <img class="flag" src="https://www.countryflags.io/kw/shiny/64.png" alt="Kuwait Flag" onclick="myFunction('KW')">
+    <img class="flag" src="https://www.countryflags.io/kg/shiny/64.png" alt="Kyrgyzstan Flag" onclick="myFunction('KG')">
+    <img class="flag" src="https://www.countryflags.io/la/shiny/64.png" alt="Lao Flag" onclick="myFunction('LA')">
+    <img class="flag" src="https://www.countryflags.io/lv/shiny/64.png" alt="Latvia Flag" onclick="myFunction('LV')">
+    <img class="flag" src="https://www.countryflags.io/lb/shiny/64.png" alt="Lebanon Flag" onclick="myFunction('LB')">
+    <img class="flag" src="https://www.countryflags.io/ls/shiny/64.png" alt="Lesotho Flag" onclick="myFunction('LS')">
+    <img class="flag" src="https://www.countryflags.io/lr/shiny/64.png" alt="Liberia Flag" onclick="myFunction('LR')">
+    <img class="flag" src="https://www.countryflags.io/ly/shiny/64.png" alt="Libya Flag" onclick="myFunction('LY')">
+    <img class="flag" src="https://www.countryflags.io/lt/shiny/64.png" alt="Lithuania Flag" onclick="myFunction('LT')">
+    <img class="flag" src="https://www.countryflags.io/lu/shiny/64.png" alt="Luxembourg Flag" onclick="myFunction('LU')">
+    <img class="flag" src="https://www.countryflags.io/mk/shiny/64.png" alt="Macedonia Flag" onclick="myFunction('MK')">
+    <img class="flag" src="https://www.countryflags.io/mg/shiny/64.png" alt="Madagascar Flag" onclick="myFunction('MG')">
+    <img class="flag" src="https://www.countryflags.io/mw/shiny/64.png" alt="Malawi Flag" onclick="myFunction('MW')">
+    <img class="flag" src="https://www.countryflags.io/my/shiny/64.png" alt="Malaysia Flag" onclick="myFunction('MY')">
+    <img class="flag" src="https://www.countryflags.io/ml/shiny/64.png" alt="Mali Flag" onclick="myFunction('ML')">
+    <img class="flag" src="https://www.countryflags.io/mr/shiny/64.png" alt="Mauritania Flag" onclick="myFunction('MR')">
+    <img class="flag" src="https://www.countryflags.io/mx/shiny/64.png" alt="Mexico Flag" onclick="myFunction('MX')">
+    <img class="flag" src="https://www.countryflags.io/md/shiny/64.png" alt="Moldova Flag" onclick="myFunction('MD')">
+    <img class="flag" src="https://www.countryflags.io/mn/shiny/64.png" alt="Mongolia Flag" onclick="myFunction('MN')">
+    <img class="flag" src="https://www.countryflags.io/me/shiny/64.png" alt="Montenegro Flag" onclick="myFunction('ME')">
+    <img class="flag" src="https://www.countryflags.io/ma/shiny/64.png" alt="Morocco Flag" onclick="myFunction('MA')">
+    <img class="flag" src="https://www.countryflags.io/mz/shiny/64.png" alt="Mozambique Flag" onclick="myFunction('MZ')">
+    <img class="flag" src="https://www.countryflags.io/mm/shiny/64.png" alt="Myanmar Flag" onclick="myFunction('MM')">
+    <img class="flag" src="https://www.countryflags.io/na/shiny/64.png" alt="Namibia Flag" onclick="myFunction('NA')">
+    <img class="flag" src="https://www.countryflags.io/np/shiny/64.png" alt="Nepal Flag" onclick="myFunction('NP')">
+    <img class="flag" src="https://www.countryflags.io/nl/shiny/64.png" alt="Netherlands Flag" onclick="myFunction('NL')">
+    <img class="flag" src="https://www.countryflags.io/nc/shiny/64.png" alt="New Caledonia Flag" onclick="myFunction('NC')">
+    <img class="flag" src="https://www.countryflags.io/nz/shiny/64.png" alt="New Zealand Flag" onclick="myFunction('NZ')">
+    <img class="flag" src="https://www.countryflags.io/ni/shiny/64.png" alt="Nicaragua Flag" onclick="myFunction('NI')">
+    <img class="flag" src="https://www.countryflags.io/ne/shiny/64.png" alt="Niger Flag" onclick="myFunction('NE')">
+    <img class="flag" src="https://www.countryflags.io/ng/shiny/64.png" alt="Nigeria Flag" onclick="myFunction('NG')">
+    <img class="flag" src="https://www.countryflags.io/no/shiny/64.png" alt="Norway Flag" onclick="myFunction('NO')">
+    <img class="flag" src="https://www.countryflags.io/om/shiny/64.png" alt="Oman Flag" onclick="myFunction('OM')">
+    <img class="flag" src="https://www.countryflags.io/pk/shiny/64.png" alt="Pakistan Flag" onclick="myFunction('PK')">
+    <img class="flag" src="https://www.countryflags.io/ps/shiny/64.png" alt="Palestine Flag" onclick="myFunction('PS')">
+    <img class="flag" src="https://www.countryflags.io/pa/shiny/64.png" alt="Panama Flag" onclick="myFunction('PA')">
+    <img class="flag" src="https://www.countryflags.io/pg/shiny/64.png" alt="Papua New Guinea Flag" onclick="myFunction('PG')">
+    <img class="flag" src="https://www.countryflags.io/py/shiny/64.png" alt="Paraguay Flag" onclick="myFunction('PY')">
+    <img class="flag" src="https://www.countryflags.io/pe/shiny/64.png" alt="Peru Flag" onclick="myFunction('PE')">
+    <img class="flag" src="https://www.countryflags.io/ph/shiny/64.png" alt="Philippines Flag" onclick="myFunction('PH')">
+    <img class="flag" src="https://www.countryflags.io/pl/shiny/64.png" alt="Poland Flag" onclick="myFunction('PL')">
+    <img class="flag" src="https://www.countryflags.io/pt/shiny/64.png" alt="Portugal Flag" onclick="myFunction('PT')">
+    <img class="flag" src="https://www.countryflags.io/pr/shiny/64.png" alt="Puerto Rico Flag" onclick="myFunction('PR')">
+    <img class="flag" src="https://www.countryflags.io/qa/shiny/64.png" alt="Qatar Flag" onclick="myFunction('QA')">
+    <img class="flag" src="https://www.countryflags.io/ro/shiny/64.png" alt="Romania Flag" onclick="myFunction('RO')">
+    <img class="flag" src="https://www.countryflags.io/ru/shiny/64.png" alt="Russia Flag" onclick="myFunction('RU')">
+    <img class="flag" src="https://www.countryflags.io/rw/shiny/64.png" alt="Rwanda Flag" onclick="myFunction('RW')">
+    <img class="flag" src="https://www.countryflags.io/sa/shiny/64.png" alt="Saudi Arabia Flag" onclick="myFunction('SA')">
+    <img class="flag" src="https://www.countryflags.io/sn/shiny/64.png" alt="Senegal Flag" onclick="myFunction('SN')">
+    <img class="flag" src="https://www.countryflags.io/rs/shiny/64.png" alt="Serbia Flag" onclick="myFunction('RS')">
+    <img class="flag" src="https://www.countryflags.io/sl/shiny/64.png" alt="Sierra Leone Flag" onclick="myFunction('SL')">
+    <img class="flag" src="https://www.countryflags.io/sg/shiny/64.png" alt="Singapore Flag" onclick="myFunction('SG')">
+    <img class="flag" src="https://www.countryflags.io/sk/shiny/64.png" alt="Slovakia Flag" onclick="myFunction('SK')">
+    <img class="flag" src="https://www.countryflags.io/si/shiny/64.png" alt="Slovenia Flag" onclick="myFunction('SI')">
+    <img class="flag" src="https://www.countryflags.io/sb/shiny/64.png" alt="Solomon Islands Flag" onclick="myFunction('SB')">
+    <img class="flag" src="https://www.countryflags.io/so/shiny/64.png" alt="Somalia Flag" onclick="myFunction('SO')">
+    <img class="flag" src="https://www.countryflags.io/za/shiny/64.png" alt="South Africa Flag" onclick="myFunction('ZA')">
+    <img class="flag" src="https://www.countryflags.io/kr/shiny/64.png" alt="Korea Republic Flag" onclick="myFunction('KR')">
+    <img class="flag" src="https://www.countryflags.io/ss/shiny/64.png" alt="South Sudan Flag" onclick="myFunction('SS')">
+    <img class="flag" src="https://www.countryflags.io/es/shiny/64.png" alt="Spain Flag" onclick="myFunction('ES')">
+    <img class="flag" src="https://www.countryflags.io/lk/shiny/64.png" alt="Sri Lanka Flag" onclick="myFunction('LK')">
+    <img class="flag" src="https://www.countryflags.io/sd/shiny/64.png" alt="Sudan Flag" onclick="myFunction('SD')">
+    <img class="flag" src="https://www.countryflags.io/sr/shiny/64.png" alt="Suriname Flag" onclick="myFunction('SR')">
+    <img class="flag" src="https://www.countryflags.io/sz/shiny/64.png" alt="Swaziland Flag" onclick="myFunction('SZ')">
+    <img class="flag" src="https://www.countryflags.io/se/shiny/64.png" alt="Sweden Flag" onclick="myFunction('SE')">
+    <img class="flag" src="https://www.countryflags.io/ch/shiny/64.png" alt="Switzerland Flag" onclick="myFunction('CH')">
+    <img class="flag" src="https://www.countryflags.io/sy/shiny/64.png" alt="Syrian Arab Republic Flag" onclick="myFunction('SY')">
+    <img class="flag" src="https://www.countryflags.io/tw/shiny/64.png" alt="Taiwan Flag" onclick="myFunction('TW')">
+    <img class="flag" src="https://www.countryflags.io/tj/shiny/64.png" alt="Tajikistan Flag" onclick="myFunction('TJ')">
+    <img class="flag" src="https://www.countryflags.io/tz/shiny/64.png" alt="Tanzania Flag" onclick="myFunction('TZ')">
+    <img class="flag" src="https://www.countryflags.io/th/shiny/64.png" alt="Thailand Flag" onclick="myFunction('TH')">
+    <img class="flag" src="https://www.countryflags.io/tl/shiny/64.png" alt="Timor-Leste Flag" onclick="myFunction('TL')">
+    <img class="flag" src="https://www.countryflags.io/tg/shiny/64.png" alt="Togo Flag" onclick="myFunction('TG')">
+    <img class="flag" src="https://www.countryflags.io/tt/shiny/64.png" alt="Trinidad & Tobago Flag" onclick="myFunction('TT')">
+    <img class="flag" src="https://www.countryflags.io/tn/shiny/64.png" alt="Tunisia Flag" onclick="myFunction('TN')">
+    <img class="flag" src="https://www.countryflags.io/tr/shiny/64.png" alt="Turkey Flag" onclick="myFunction('TR')">
+    <img class="flag" src="https://www.countryflags.io/tm/shiny/64.png" alt="Turkmenistan Flag" onclick="myFunction('TM')">
+    <img class="flag" src="https://www.countryflags.io/ae/shiny/64.png" alt="UAE Flag" onclick="myFunction('AE')">
+    <img class="flag" src="https://www.countryflags.io/ug/shiny/64.png" alt="Uganda Flag" onclick="myFunction('UG')">
+    <img class="flag" src="https://www.countryflags.io/gb/shiny/64.png" alt="Great Britain Flag" onclick="myFunction('GB')">
+    <img class="flag" src="https://www.countryflags.io/ua/shiny/64.png" alt="Ukraine Flag" onclick="myFunction('UA')">
+    <img class="flag" src="https://www.countryflags.io/us/shiny/64.png" alt="United States Flag" onclick="myFunction('US')">
+    <img class="flag" src="https://www.countryflags.io/uy/shiny/64.png" alt="Uruguay Flag" onclick="myFunction('UY')">
+    <img class="flag" src="https://www.countryflags.io/uz/shiny/64.png" alt="Uzbekistan Flag" onclick="myFunction('UZ')">
+    <img class="flag" src="https://www.countryflags.io/vu/shiny/64.png" alt="Vanuatu Flag" onclick="myFunction('VU')">
+    <img class="flag" src="https://www.countryflags.io/ve/shiny/64.png" alt="Venezuela Flag" onclick="myFunction('VE')">
+    <img class="flag" src="https://www.countryflags.io/vn/shiny/64.png" alt="Vietnam Flag" onclick="myFunction('VN')">
+    <img class="flag" src="https://www.countryflags.io/eh/shiny/64.png" alt="Western Sahara Flag" onclick="myFunction('EH')">
+    <img class="flag" src="https://www.countryflags.io/ye/shiny/64.png" alt="Yemen Flag" onclick="myFunction('YE')">
+    <img class="flag" src="https://www.countryflags.io/zm/shiny/64.png" alt="Zambia Flag" onclick="myFunction('ZM')">
+    <img class="flag" src="https://www.countryflags.io/zw/shiny/64.png" alt="Zimbabwe Flag" onclick="myFunction('ZW')">
+
+
+
+</div>
+
+
+
+
+<script src="javascript.js"></script>
+</body>
+</html>

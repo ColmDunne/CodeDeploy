@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" crossorigin="Access-Control-Allow-Origin"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Charts</title>
+</head>
+<body>
+    
+    <canvas id="chart" width="800" height="400"></canvas>
+    <script>  
+    api_url='https://api.covid19api.com/total/country/IE';
+    const xlabels = [];
+    const ylabels =[];
+    const ylabels2 = [];
+    const ylabels3=[];
+        chartIt ();
+        async function chartIt(){    
+            await getData(); 
+         var ctx = document.getElementById('chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: xlabels,
+        datasets: [{
+            label: 'Number of Confirmed Cases',
+            data: ylabels,
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: 'Number of Active Cases',
+            data: ylabels2,
+            backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+            borderColor: ['rgba(54, 162, 235, 1)'],
+            borderWidth: 1
+        },
+        {
+            label: 'Number of Recovered Cases',
+            data: ylabels3,
+            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)'],
+            borderWidth: 1
+        },
+    ]
+    }
+});
+}
+
+        async function getData(){
+
+    
+            const response = await fetch(api_url);
+            const data = await response.text();
+            const api = JSON.parse(data);
+          
+
+           for (i = 0; i < api.length; i++){
+                var UnFormattedDate = api[i].Date;
+                var FormattedDate = UnFormattedDate.substring(0,10);
+                xlabels.push(FormattedDate);
+                ylabels.push(api[i].Confirmed);
+                ylabels2.push(api[i].Active);
+                ylabels3.push(api[i].Recovered);
+            }
+
+          /*  for (i = 0; i < api[i].Date.length; i++){
+                console.log(api[i].Date);
+                console.log(i);
+            }*/
+
+           /*const table = api.split('\n');
+            table.forEach(row => {
+                const columns = row.split(',');
+                const date = columns[11];
+                xlabels.push(date);
+                const cases = columns[7]
+                ylabels.push(cases);
+                console.log(date,cases);
+            
+             for (i=0; i < table.length; i++){
+                var eg = table[12];
+                console.log(eg);
+            }
+        });*/
+    
+        }   
+    </script>
+</body>
+</html>

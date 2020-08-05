@@ -1,0 +1,186 @@
+.stats{
+width: 100%;
+height: 200px;
+}
+header h1{
+   text-align: center;
+}
+body{
+    margin: 0;
+    background:	linear-gradient(90deg,#e6ffff,#66ffff,#00cccc);
+}
+p{
+    text-align: center;
+}
+/*.menu{
+    width:100%;
+    background: skyblue;
+    overflow:auto;
+    height:60px;
+}
+.menu p{
+    float: left;
+    font-size: 30px;
+}
+.search-form{
+    padding-top: 25px;
+    margin-top:5;
+    float:right;
+    margin-right: 100px;
+}
+input[type=text]{
+    padding:7px;
+    border:none;
+    font-size:16px;
+    font-family:sans-serif;
+}
+
+button{
+    float:right;
+    background:#303030;
+    color:white;
+    border-radius: 0 5px 5px 0;
+    cursor:pointer;
+    position:relative;
+    padding:7px;
+    font-family: sans-serif;
+    border:none;
+    font-size:16px;
+}
+
+.global-container{
+    background: linear-gradient(to right,#303030,#000000);
+    text-align: center;
+    width: 100%;
+    margin:10px 20px 10px 300px;
+    height: 200px; 
+}*/
+.total{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+}
+
+.active{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+}
+.affectedCountries{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+}
+.deaths{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+}
+.recovered{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+
+}
+.newCases{
+    font-size: 22px;
+    margin: 0;
+    color: black;
+}
+
+/*.virus{
+    width: 25%;
+    float: left;
+    height: 200px;
+}
+
+.globe{
+    width: 25%;
+    float: left;
+    height: 200px;
+}*/
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+img:hover {
+    cursor: pointer;
+}
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    overflow:auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content{
+    background-color: skyblue;
+    margin:20% auto;
+    width:70%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+    text-align: center;
+}
+.modal-header h2, .modal-footer h3{
+    margin:0;
+}
+.modal-header{
+    background:#303030;
+    padding:15px;
+    color:skyblue;
+    text-align:center;
+}
+.modal-body{
+    padding:10px 20px;
+}
+
+.modal-footer{
+    background: #303030;
+    padding: 10px;
+    color: skyblue;
+    text-align: center;
+}
+.closeBtn{
+    color:#ccc;
+    float:right;
+    font-size: 30px;
+}
+
+.closeBtn:hover,.closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal button {
+    background: #fa923f;
+    color: white;
+    border: 1px solid #521751;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.modal button:hover,
+.modal button:active {
+    background: #521751;
+}
+
+.modal button:focus {
+    outline: none;
+}
+
+@keyframes modalopen{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
