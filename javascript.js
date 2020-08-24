@@ -40,6 +40,7 @@ var ylabels2 = [];
 var ylabels3 = [];
 
 function createChart(code) {
+    console.log('We get to here');
     api_url = 'https://api.covid19api.com/total/country/' + code;
     chartIt();
 }
