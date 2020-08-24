@@ -30,6 +30,7 @@ function myFunction(code) {
         $(".countryNewCases").html('<strong>Cases Today:</strong>' + newCases);
         $(".countryNewDeaths").html('<strong>Deaths Today:</strong>' + newDeaths); 
         $(".countryName").html(countryName);
+        console.log('are we getting to here?');
         createChart(code);
     });
 }
@@ -38,7 +39,7 @@ var xlabels = [];
 var ylabels = [];
 var ylabels2 = [];
 var ylabels3 = [];
-console.log('are we getting to here?');
+
 function createChart(code) {
     console.log('We get to here');
     api_url = 'https://api.covid19api.com/total/country/' + code;
@@ -46,6 +47,7 @@ function createChart(code) {
 }
     
 async function chartIt() {  
+    console.log('are we getting to here?');
     await getData();
     var ctx = document.getElementById('chart').getContext('2d');
     var myChart = new Chart(ctx, {
