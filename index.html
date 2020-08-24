@@ -11,10 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 </head>
 <body>
-   
-     <header>
+    
+    <header>
         <nav>
-        <h1>Covid-19 Counter</h1>
+        <h1>Covid-19 Case Counter</h1>
     </nav>
     </header>
 
@@ -27,6 +27,7 @@
         <p class="recovered"></p>
         <p class="newCases"></p>
  
+ 
 <br>
 
 <hr width="80%"> 
@@ -37,13 +38,15 @@
             <span class="closeBtn">&times;</span>
             <h2 class="countryName"></h2>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modal-body">
             <li class="countryTotal"></li>
             <li class="countryActive"></li>
             <li class="countryRecovered"></li>
             <li class="countryDeaths"></li>
             <li class="countryNewCases"></li>
             <li class="countryNewDeaths"></li>
+            <br>
+            <canvas id="chart" class="myChart"></canvas>
         </div>
         <div class="modal-footer">
             <h3>Click anywhere to close </h3>
