@@ -30,8 +30,10 @@ function myFunction(code) {
         $(".countryNewCases").html('<strong>Cases Today:</strong>' + newCases);
         $(".countryNewDeaths").html('<strong>Deaths Today:</strong>' + newDeaths); 
         $(".countryName").html(countryName);
+        
+         createChart(code);
     });
-    createChart(code);
+  
 }
 
 var xlabels = [];
