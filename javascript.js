@@ -16,26 +16,22 @@ $.getJSON("https://api.thevirustracker.com/free-api?global=stats",function(api) 
 
 function myFunction(code) {
     $.getJSON('https://api.thevirustracker.com/free-api?countryTotal=' + code ,function(country) {
-        console.log('Are we getting here');
         var total = country.countrydata[0].total_cases;
         var active = country.countrydata[0].total_active_cases;
         var recovered = country.countrydata[0].total_recovered;
         var deaths = country.countrydata[0].total_deaths;
         var newCases = country.countrydata[0].total_new_cases_today;
-        console.log('what about here');
         var newDeaths = country.countrydata[0].total_new_deaths_today;
         var countryName = country.countrydata[0].info.title;
         $(".countryTotal").html('<strong>Total Cases:</strong>' + total);
         $(".countryActive").html('<strong>Active Cases:</strong>' + active);
         $(".countryRecovered").html('<strong>Recovered Cases:</strong>' + recovered);
         $(".countryDeaths").html('<strong>Total Deaths:</strong>' + deaths);
-        console.log('or here');
         $(".countryNewCases").html('<strong>Cases Today:</strong>' + newCases);
         $(".countryNewDeaths").html('<strong>Deaths Today:</strong>' + newDeaths); 
         $(".countryName").html(countryName);
-        console.log('are we getting to here?');
-        createChart(code);
     });
+    createChart(code);
 }
 
 var xlabels = [];
@@ -44,13 +40,11 @@ var ylabels2 = [];
 var ylabels3 = [];
 
 function createChart(code) {
-    console.log('We get to here');
     api_url = 'https://api.covid19api.com/total/country/' + code;
     chartIt();
 }
     
 async function chartIt() {  
-    console.log('are we getting to here?');
     await getData();
     var ctx = document.getElementById('chart').getContext('2d');
     var myChart = new Chart(ctx, {
