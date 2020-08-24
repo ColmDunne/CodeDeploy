@@ -16,6 +16,7 @@ $.getJSON("https://api.thevirustracker.com/free-api?global=stats",function(api) 
 
 function myFunction(code) {
     $.getJSON('https://api.thevirustracker.com/free-api?countryTotal=' + code ,function(country) {
+        cfggggggggggggggggggggggggggggggggcghcghxcf
         var total = country.countrydata[0].total_cases;
         var active = country.countrydata[0].total_active_cases;
         var recovered = country.countrydata[0].total_recovered;
